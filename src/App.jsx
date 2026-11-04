@@ -6,6 +6,7 @@ import NuestrasTiendas from './pages/NuestrasTiendas'
 import Inventario from './pages/Inventario'
 import DetalleProducto from './pages/DetalleProducto'
 import AgregarProducto from './pages/AgregarProducto'
+import Carrito from './pages/Carrito'
 import NoEncontrada from './pages/NoEncontrada'
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <Route path="inventario" element={<Inventario />} />
         <Route path="inventario/:id" element={<DetalleProducto />} />
         <Route path="agregar" element={<AgregarProducto />} />
+        <Route path="carrito" element={<Carrito />} />
         <Route path="*" element={<NoEncontrada />} />
       </Route>
     </Routes>

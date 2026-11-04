@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom'
 const enlaces = [
   { ruta: '/inventario', texto: 'Inventario' },
   { ruta: '/agregar', texto: 'Agregar producto' },
+  { ruta: '/carrito', texto: 'Carrito' },
 ]
 
 function MenuSuperior() {
