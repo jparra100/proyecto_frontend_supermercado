@@ -2,24 +2,42 @@
 
 ## Descripción
 
-Sitio web desarrollado con React para gestionar el inventario de un supermercado. Permite navegar entre
-páginas informativas, registrar nuevos artículos mediante un formulario y consultar todos los artículos
-en una tabla.
+Sitio web hecho con React para gestionar el inventario de un supermercado. Permite agregar artículos,
+verlos en una lista, filtrarlos por categoría, revisar su detalle y llevarlos a un carrito. Cada vez que
+se agrega o se quita un artículo del carrito, el inventario se actualiza.
+
+Sitio publicado: https://jparra100.github.io/proyecto_frontend_supermercado/
+
+## Funciones
+
+- **Inventario:** tabla con todos los artículos y su cantidad disponible.
+- **Filtro por categoría:** muestra solo los artículos de la categoría elegida, sin perder la lista original.
+- **Detalle del artículo:** al hacer clic en un artículo se ve su información y se puede agregar al carrito.
+- **Carrito:** lista los artículos agregados y permite aumentar o disminuir sus cantidades.
+- **Agregar producto:** formulario con validaciones para registrar un artículo nuevo.
+
+## Páginas
+
+| Dirección | Página |
+|---|---|
+| `#/` | Inicio |
+| `#/inventario` | Lista de artículos con filtro |
+| `#/inventario/:id` | Detalle de un artículo |
+| `#/carrito` | Carrito de compras |
+| `#/agregar` | Formulario para agregar un artículo |
+| `#/quienes-somos` | Quiénes somos |
+| `#/nuestras-tiendas` | Nuestras tiendas |
 
 ## Tecnologías
 
-- **React 19**: construcción de la interfaz con componentes.
-- **Vite**: entorno de desarrollo y compilación.
-- **React Router**: navegación entre páginas sin recargar el sitio.
-- **Context API de React (`createContext` + `useState`)**: estado global de los artículos.
-- **Tailwind CSS v4**: framework CSS usado para los estilos de todo el sitio.
+- **React 19** y **Vite**
+- **React Router** para la navegación
+- **Context API** para el estado global (inventario y carrito)
+- **Tailwind CSS v4** para los estilos
 
-## Requisitos para ejecutar
+## Cómo ejecutarlo
 
-- Node.js 20 o superior
-- npm
-
-## Instalación y ejecución
+Se necesita Node.js 20 o superior.
 
 ```bash
 git clone https://github.com/jparra100/proyecto_frontend_supermercado.git
@@ -28,47 +46,30 @@ npm install
 npm run dev
 ```
 
-Luego abrir en el navegador la dirección que muestra la terminal (por defecto `http://localhost:5173`).
-
-Otros comandos:
+Luego se abre en el navegador la dirección que muestra la terminal:
+`http://localhost:5173/proyecto_frontend_supermercado/`
 
 | Comando | Uso |
 |---|---|
-| `npm run build` | Genera la versión de producción en la carpeta `dist` |
-| `npm run preview` | Muestra la versión de producción de forma local |
-| `npm run lint` | Revisa el código con Oxlint |
+| `npm run build` | Genera la versión de producción en `dist` |
+| `npm run lint` | Revisa el código |
+| `npm run deploy` | Publica el sitio en GitHub Pages |
 
 ## Estructura del proyecto
 
 ```
 src/
-├── main.jsx                  Punto de entrada: BrowserRouter e InventarioProvider
-├── App.jsx                   Definición de rutas
-├── index.css                 Tailwind CSS y colores del sitio
-├── context/
-│   └── InventarioContext.jsx Estado global de los artículos
-├── data/                     Datos de ejemplo (productos, tipos, tiendas y fotos)
-├── components/               Componentes reutilizables
-│   ├── Layout.jsx
-│   ├── MenuSuperior.jsx
-│   ├── MenuInferior.jsx
-│   ├── EncabezadoPagina.jsx
-│   ├── CampoTexto.jsx
-│   ├── TablaProductos.jsx
-│   └── Foto.jsx
-└── pages/                    Una vista por ruta
-    ├── Home.jsx
-    ├── QuienesSomos.jsx
-    ├── NuestrasTiendas.jsx
-    ├── Inventario.jsx
-    ├── AgregarProducto.jsx
-    └── NoEncontrada.jsx
+├── main.jsx          Punto de entrada
+├── App.jsx           Rutas del sitio
+├── context/          Estado global: InventarioContext y CarritoContext
+├── data/             Datos de ejemplo (productos, categorías, tiendas y fotos)
+├── components/       Componentes reutilizables (menús, tabla, fila del carrito, etc.)
+└── pages/            Una página por ruta
 ```
 
 ## Créditos de las imágenes
 
-Las fotografías provienen de Wikimedia Commons y se usan según sus licencias. Cada una muestra su
-crédito en el sitio.
+Las fotografías provienen de Wikimedia Commons y se usan según sus licencias.
 
 | Imagen | Autor | Licencia |
 |---|---|---|
