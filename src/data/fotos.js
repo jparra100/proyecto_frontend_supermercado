@@ -1,7 +1,10 @@
 
+// Las imágenes están en public/img. BASE_URL agrega la carpeta del sitio en GitHub Pages
+const base = import.meta.env.BASE_URL
+
 const fotos = {
   puestoVega: {
-    src: '/img/la-vega-central-15747341503.jpg',
+    src: `${base}img/la-vega-central-15747341503.jpg`,
     ancho: 1920,
     alto: 1278,
     alt: 'Vendedor ordena racimos de uva junto a tomates en un puesto de La Vega Central',
@@ -12,7 +15,7 @@ const fotos = {
     fuente: 'https://commons.wikimedia.org/wiki/File:La_Vega_Central_(15747341503).jpg',
   },
   vegaGeneral: {
-    src: '/img/la-vega-central-en-santiago.jpg',
+    src: `${base}img/la-vega-central-en-santiago.jpg`,
     ancho: 1920,
     alto: 1440,
     alt: 'Pasillo de La Vega Central lleno de gente comprando tomates, paltas y verduras',
@@ -23,7 +26,7 @@ const fotos = {
     fuente: 'https://commons.wikimedia.org/wiki/File:La_Vega_Central_en_Santiago.jpg',
   },
   ajies: {
-    src: '/img/ajies-en-la-vega-central.jpg',
+    src: `${base}img/ajies-en-la-vega-central.jpg`,
     ancho: 1920,
     alto: 1285,
     alt: 'Canasto de ajíes rojos con un letrero de pizarra que marca su precio',
@@ -34,7 +37,7 @@ const fotos = {
     fuente: 'https://commons.wikimedia.org/wiki/File:Aj%C3%ADes_en_la_Vega_Central..jpg',
   },
   irarrazaval: {
-    src: '/img/avenida-irarrazaval-en-la-comuna-de-nunoa.jpg',
+    src: `${base}img/avenida-irarrazaval-en-la-comuna-de-nunoa.jpg`,
     ancho: 1920,
     alto: 1440,
     alt: 'Avenida Irarrázaval con locales comerciales y la cordillera nevada al fondo',
@@ -46,7 +49,7 @@ const fotos = {
       'https://commons.wikimedia.org/wiki/File:Avenida_Irarr%C3%A1zaval,_en_la_comuna_de_%C3%91u%C3%B1oa,_en_Santiago_de_Chile.jpg',
   },
   pergolaNunoa: {
-    src: '/img/pergola-plaza-nunoa-a740204.jpg',
+    src: `${base}img/pergola-plaza-nunoa-a740204.jpg`,
     ancho: 1920,
     alto: 1395,
     alt: 'Pérgola de muros amarillos y rojos con techo de tejas en la Plaza Ñuñoa',
