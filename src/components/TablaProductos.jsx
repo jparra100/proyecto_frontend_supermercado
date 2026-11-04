@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 
 function TablaProductos({ productos }) {
   return (
@@ -15,7 +16,14 @@ function TablaProductos({ productos }) {
         <tbody>
           {productos.map((producto) => (
             <tr key={producto.id} className="h-11 border-b border-linea last:border-b-0">
-              <td className="px-4 py-3 md:px-6 font-medium">{producto.nombre}</td>
+              <td className="px-4 py-3 md:px-6 font-medium">
+                <Link
+                  to={`/inventario/${producto.id}`}
+                  className="underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-tinta"
+                >
+                  {producto.nombre}
+                </Link>
+              </td>
               <td className="px-4 py-3 md:px-6">{producto.marca}</td>
               <td className="px-4 py-3 md:px-6 text-suave">{producto.tipo}</td>
               <td className="px-4 py-3 md:px-6 text-right tabular-nums">{producto.cantidad}</td>
