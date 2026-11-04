@@ -8,9 +8,23 @@ export function InventarioProvider({ children }) {
   const [productos, setProductos] = useState(productosIniciales)
 
 
-  function agregarProducto({ nombre, marca, tipo }) {
-    const nuevoProducto = { id: Date.now(), nombre, marca, tipo }
+  function agregarProducto({ nombre, marca, tipo, cantidad }) {
+    const nuevoProducto = { id: Date.now(), nombre, marca, tipo, cantidad }
     setProductos((listaActual) => [...listaActual, nuevoProducto])
+  }
+
+  // Busca un producto por su id (devuelve undefined si no existe)
+  function obtenerProducto(id) {
+    return productos.find((producto) => producto.id === id)
+  }
+
+  // Suma o resta unidades al stock de un producto. Si "diferencia" es negativa, resta.
+  function cambiarStock(id, diferencia) {
+    setProductos((listaActual) =>
+      listaActual.map((producto) =>
+        producto.id === id ? { ...producto, cantidad: producto.cantidad + diferencia } : producto,
+      ),
+    )
   }
 
   function existeProducto(nombre, marca) {
@@ -22,7 +36,9 @@ export function InventarioProvider({ children }) {
   }
 
   return (
-    <InventarioContext.Provider value={{ productos, agregarProducto, existeProducto }}>
+    <InventarioContext.Provider
+      value={{ productos, agregarProducto, existeProducto, obtenerProducto, cambiarStock }}
+    >
       {children}
     </InventarioContext.Provider>
   )

@@ -5,7 +5,7 @@ import EncabezadoPagina from '../components/EncabezadoPagina'
 import { useInventario } from '../context/InventarioContext'
 import tiposProducto from '../data/tiposProducto'
 
-const formularioVacio = { nombre: '', marca: '', tipo: '' }
+const formularioVacio = { nombre: '', marca: '', tipo: '', cantidad: '' }
 
 
 function validar(datos, existeProducto) {
@@ -25,6 +25,12 @@ function validar(datos, existeProducto) {
 
   if (!tiposProducto.includes(datos.tipo)) {
     errores.tipo = 'Elige el tipo de producto.'
+  }
+
+  if (datos.cantidad === '') {
+    errores.cantidad = 'Escribe la cantidad disponible.'
+  } else if (!/^\d+$/.test(datos.cantidad) || Number(datos.cantidad) < 1) {
+    errores.cantidad = 'La cantidad debe ser un número entero mayor a 0.'
   }
 
   if (!errores.nombre && !errores.marca && existeProducto(datos.nombre, datos.marca)) {
@@ -53,6 +59,7 @@ function AgregarProducto() {
       nombre: formulario.nombre.trim(),
       marca: formulario.marca.trim(),
       tipo: formulario.tipo,
+      cantidad: formulario.cantidad.trim(),
     }
 
     const erroresEncontrados = validar(datos, existeProducto)
@@ -62,7 +69,7 @@ function AgregarProducto() {
       return
     }
 
-    agregarProducto(datos)
+    agregarProducto({ ...datos, cantidad: Number(datos.cantidad) })
     setMensajeExito(`Se agregó "${datos.nombre}" al inventario.`)
     setFormulario(formularioVacio)
   }
@@ -74,7 +81,7 @@ function AgregarProducto() {
     <>
       <EncabezadoPagina
         titulo="Agregar producto"
-        descripcion="Registra un artículo nuevo con su nombre, marca y tipo. Aparecerá de inmediato en la tabla del inventario."
+        descripcion="Registra un artículo nuevo con su nombre, marca, tipo y cantidad disponible. Aparecerá de inmediato en la tabla del inventario."
       />
 
       <div className="grid gap-6 md:grid-cols-[3fr_2fr] md:items-start">
@@ -134,6 +141,16 @@ function AgregarProducto() {
               </p>
             )}
           </div>
+
+          <CampoTexto
+            id="cantidad"
+            etiqueta="Cantidad disponible"
+            tipo="number"
+            valor={formulario.cantidad}
+            error={errores.cantidad}
+            onChange={manejarCambio}
+            placeholder="Ej.: 20"
+          />
 
           <div className="flex flex-wrap items-center gap-4">
             <button

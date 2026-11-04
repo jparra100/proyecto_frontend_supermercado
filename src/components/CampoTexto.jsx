@@ -1,5 +1,5 @@
 // Campo de texto con etiqueta y mensaje de error. Se reutiliza en el formulario.
-function CampoTexto({ id, etiqueta, valor, error, onChange, placeholder }) {
+function CampoTexto({ id, etiqueta, valor, error, onChange, placeholder, tipo = 'text' }) {
   const idError = `${id}-error`
 
   return (
@@ -10,7 +10,7 @@ function CampoTexto({ id, etiqueta, valor, error, onChange, placeholder }) {
       <input
         id={id}
         name={id}
-        type="text"
+        type={tipo}
         value={valor}
         onChange={onChange}
         placeholder={placeholder}
