@@ -9,6 +9,7 @@ function TablaProductos({ productos }) {
             <th scope="col" className="w-1/2 px-4 py-3 md:px-6 font-normal">Nombre</th>
             <th scope="col" className="px-4 py-3 md:px-6 font-normal">Marca</th>
             <th scope="col" className="px-4 py-3 md:px-6 font-normal">Tipo</th>
+            <th scope="col" className="px-4 py-3 md:px-6 text-right font-normal">Disponible</th>
           </tr>
         </thead>
         <tbody>
@@ -17,6 +18,7 @@ function TablaProductos({ productos }) {
               <td className="px-4 py-3 md:px-6 font-medium">{producto.nombre}</td>
               <td className="px-4 py-3 md:px-6">{producto.marca}</td>
               <td className="px-4 py-3 md:px-6 text-suave">{producto.tipo}</td>
+              <td className="px-4 py-3 md:px-6 text-right tabular-nums">{producto.cantidad}</td>
             </tr>
           ))}
         </tbody>
